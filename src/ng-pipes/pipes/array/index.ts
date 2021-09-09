@@ -21,6 +21,8 @@ import { GroupByImpurePipe } from './group-by-impure';
 import { FilterByImpurePipe } from './filter-by-impure';
 import { OrderByImpurePipe } from './order-by-impure';
 import { RangePipe } from './range';
+import { ChunkPipe } from './chunk';
+import { FromPairsPipe } from './from-pairs';
 
 const ARRAY_PIPES = [
   DiffPipe,
@@ -45,6 +47,8 @@ const ARRAY_PIPES = [
   OrderByPipe,
   OrderByImpurePipe,
   RangePipe,
+  ChunkPipe,
+  FromPairsPipe
 ];
 
 @NgModule({
@@ -76,3 +80,5 @@ export { GroupByImpurePipe } from './group-by-impure';
 export { FilterByImpurePipe } from './filter-by-impure';
 export { OrderByImpurePipe } from './order-by-impure';
 export { RangePipe } from './range';
+export { ChunkPipe } from './chunk';
+export { FromPairsPipe } from './from-pairs';

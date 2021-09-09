@@ -7,20 +7,25 @@
 <a href="https://travis-ci.org/danrevah/ngx-pipes"><img src="https://img.shields.io/travis/danrevah/ngx-pipes.svg?style=flat-square" alt="Travis"></a>
 <a href="https://coveralls.io/github/danrevah/ngx-pipes?branch=master"><img src="https://img.shields.io/coveralls/danrevah/ngx-pipes.svg?style=flat-square" alt="Coveralls"></a>
 <a href="https://www.npmjs.com/package/ngx-pipes"><img src="https://img.shields.io/npm/dm/ngx-pipes.svg?style=flat-square" alt="npm"></a>
+<a href="https://www.npmjs.com/package/ngx-pipes"><img src="https://img.shields.io/npm/dt/ngx-pipes?style=flat-square" alt="npm"></a>
 <a href="https://github.com/danrevah/ngx-pipes/blob/master/LICENSE.md"><img src="https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square" alt="MIT licensed"></a>
 <br/><br/>
  Useful pipes for Angular with no external dependencies
 <br/><br/>
 </p>
 
-<b><a href="https://github.com/danrevah/typeserializer" target="_blank">TypeSerializer</a> - Another library you might find interesting. Serializer / Deserializer, designed to make prettier code while using decorators (Can be used both with Angular or Node.js).</b>
+#### Extras
+
+<b><a href="https://github.com/danrevah/typeserializer" target="_blank">TypeSerializer</a> - Serializer / Deserializer, designed to make prettier code while using decorators.</b>
+
+<b><a href="https://github.com/danrevah/segal-decorators" target="_blank">Segal Decorators</a> - Bunch of highly useful decorators, helps in writing a more concise code while improving readability</b>
 
 ## Table of contents
 
  - [Installation](#installation)
  - [Contributing](#contributing)
  - [Changelog](CHANGELOG.md)
- - [Date](#boolean)   
+ - [Date](#date)   
     - [timeAgo](#timeago)
  - [String](#string)
     - [aOrAn](#aoran)
@@ -68,6 +73,8 @@
     - [filterByImpure](#filterbyimpure)
     - [orderBy](#orderby)
     - [orderByImpure](#orderbyimpure)
+    - [chunk](#chunk)
+    - [fromPairs](#fromPairs)
  - [Object](#object)
     - [keys](#keys)
     - [values](#values)
@@ -719,7 +726,7 @@ this.arrayNestedObject = [
 <!-- Output:{foo: [{id: 1, prop: {deep: foo}}, {id: 3, prop: {deep: foo}}], bar: [{id: 2, prop: {deep: bar}}, {id: 4, prop: {deep: bar}}]}" -->
 ```
 
-## groupByImpure
+### groupByImpure
 
 Identical to groupBy pipe, the only difference is that it's an impure pipe.
 
@@ -762,7 +769,7 @@ this.users = [
 <!-- Output: "[{id: 1, first_name: 'John', last_name: 'Doe', work: { company: 'Foo Tech', previous_company: '' }}, {id: 3, first_name: 'Bruce', last_name: 'John', work: { company: 'Bar Tech' }}, {id: 4, first_name: 'William', last_name: 'Cent', work: { company: 'Foo Tech' }, arr: [{name: 'foo'}]}]" -->
 ```
 
-## filterByImpure
+### filterByImpure
 
 Identical to filterBy pipe, the only difference is that it's an impure pipe.
 
@@ -814,11 +821,33 @@ const deepObj = [
 <!-- Output: [{id: 1, ...}, {id: 3, ...}, {id: 2, ...}, {id: 4, ...}] -->
 ```
 
-## orderByImpure
+### orderByImpure
 
 Identical to orderBy pipe, the only difference is that it's an impure pipe.
 
 Impure pipes: https://angular.io/guide/pipes#impure-pipes
+
+### chunk
+
+Returns chunked array or string by size
+
+**Usage:** `array | size: [number | default = 1]`
+
+```html
+<p>{{ [1, 2, 3, 4, 5] | chunk: 2 }}</p>
+<!-- Output: "[[1, 2], [3, 4], [5]]" -->
+```
+
+### fromPairs
+
+Returns object of an array of key value pairs 
+
+**Usage:** `array | fromPairs`
+
+```html
+<p>{{ [['foo', 1], ['bar', 2]] | fromPairs }}</p> <!-- Output: "{foo: 1, bar: 2}" -->
+<p>{{ [['foo', [1, 2]], ['bar', [3, 4]]] | fromPairs }}</p> <!-- Output: "{foo: [1, 2], bar: [3, 4]}" -->
+```
 
 ## Object
 
@@ -844,7 +873,7 @@ Returns array of object values
 
 ### pairs
 
-Returns array of an object key value pairs
+Returns array of an object key value pairs 
 
 **Usage:** `object | pairs`
 
